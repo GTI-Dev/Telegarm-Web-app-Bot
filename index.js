@@ -45,9 +45,13 @@ bot.action("register", (ctx) => {
     ctx.reply("Please enter your registration details:");
 });
 
-bot.launch().then(() => {
-    console.log("Bot is up and running!");
-}).catch((err) => {
-    console.error(err);
-    process.exit(1);
-});
+bot.launch({
+    webhook: {
+      domain: "https://gti-dev-telegarm-web-app-bot.onrender.com",
+      port: process.env.PORT,
+    },
+  });
+  console.log("Bot conect successfully");
+  // Enable graceful stop
+  process.once("SIGINT", () => bot.stop("SIGINT"));
+  process.once("SIGTERM", () => bot.stop("SIGTERM"));
