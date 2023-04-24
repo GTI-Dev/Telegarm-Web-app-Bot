@@ -7,7 +7,7 @@
   "name": "telegarm-web-app-bot",
   "description": "",
   "version": "1.0.0",
-  "start":"node index.js",
+  "start": "node --trace-warnings index.js",
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
