@@ -45,4 +45,9 @@ bot.action("register", (ctx) => {
     ctx.reply("Please enter your registration details:");
 });
 
-bot.launch();
+bot.launch().then(() => {
+    console.log("Bot is up and running!");
+}).catch((err) => {
+    console.error(err);
+    process.exit(1);
+});
