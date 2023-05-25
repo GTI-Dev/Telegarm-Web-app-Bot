@@ -1,6 +1,9 @@
 require('dotenv').config()
 const { Telegraf } = require('telegraf')
-const axios = require('axios');
+const express = require('express');
+
+const app = express();
+app.use(express.json());
 
 
 const bot = new Telegraf(process.env.BOT_TOKEN)
@@ -45,4 +48,18 @@ bot.action("register", (ctx) => {
     ctx.reply("Please enter your registration details:");
 });
 
+// Set up the webhook route
+app.post(`/telegram`, (req, res) => {
+    bot.handleUpdate(req.body, res);
+});
+
+// Set the webhook URL
+bot.telegram.setWebhook(`https://vercel.com/gettechinfobots-gmailcom/telegarm-web-app-bot/92KMhZoUxsoQAghy6MetKZAZ4L8J/telegram`);
+
+// Start the Express.js server
+app.listen(process.env.PORT || 3000, () => {
+    console.log('Server is running');
+});
+
+// Start the bot
 bot.launch();
