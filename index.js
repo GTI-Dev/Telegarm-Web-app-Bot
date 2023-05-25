@@ -54,7 +54,7 @@ app.post(`/telegram`, (req, res) => {
 });
 
 // Set the webhook URL
-bot.telegram.setWebhook(`https://vercel.com/gettechinfobots-gmailcom/telegarm-web-app-bot/92KMhZoUxsoQAghy6MetKZAZ4L8J/telegram`);
+bot.telegram.setWebhook(`telegarm-web-app-573qbe1hb-gettechinfobots-gmailcom.vercel.app/telegram`);
 
 // Start the Express.js server
 app.listen(process.env.PORT || 3000, () => {
